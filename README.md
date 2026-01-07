@@ -10,17 +10,23 @@ The foundation of this project is a comprehensive news articles dataset containi
 
 ## Building the MongoDB Foundation
 
+![Detection Demo](screenshots/MongoDB Compass.png)
+
 The first step in the project was establishing a reliable data storage layer using MongoDB Atlas, MongoDB's cloud-hosted database service. MongoDB was chosen for this project because it handles semi-structured document data naturally, making it ideal for articles that might vary in their field completeness or structure. Setting up MongoDB Atlas involved creating a free-tier cluster, configuring network access to allow connections from my development environment, and establishing a database user with appropriate permissions.
 
 Once the infrastructure was in place, I loaded the CSV dataset into MongoDB using Python's pandas library to read the file and pymongo to handle the database operations. The process converted each row of the CSV into a JSON-like document that MongoDB stores in BSON format. All 50,000 articles were inserted into a collection called "articles" within a database named "news_db". This took approximately one to two minutes to complete. The data is now accessible through MongoDB Compass, MongoDB's GUI tool, where you can browse through the documents, examine individual articles, and verify the data structure. Each document retains its original fields from the CSV, making it straightforward to query by author, publication, date, or any other metadata field.
 
 ## Integrating Elasticsearch for Search
 
+![Detection Demo](screenshots/docker desktop screenshop.png)
+
 With the data safely stored in MongoDB, the next phase involved setting up Elasticsearch to enable sophisticated search capabilities. While MongoDB can handle basic queries, Elasticsearch specializes in full-text search with features like relevance scoring, fuzzy matching, and complex text analysis. I deployed Elasticsearch locally using Docker, which provided an isolated, reproducible environment without requiring a complex installation process. The Docker container runs Elasticsearch version 8.11 on port 9200, and starting it is as simple as running a single docker command.
 
 The integration between MongoDB and Elasticsearch required building an ETL (Extract, Transform, Load) pipeline. This pipeline reads documents from MongoDB, cleans the data to handle edge cases like NaN values that would cause Elasticsearch to reject the documents, and then indexes each article into Elasticsearch. The indexing process analyzes the text content, breaking it down into searchable tokens and building inverted indexes that make searches incredibly fast. I indexed approximately 12,000 articles, which took around 10-15 minutes as each article's title and content were processed and stored. This subset of the full dataset is more than sufficient to demonstrate the search capabilities while keeping indexing time reasonable for a portfolio project.
 
 ## Search Functionality and Results
+
+![Detection Demo](screenshots/MongoDB Compass.png)
 
 With both databases operational, the system can now perform sophisticated searches across thousands of news articles in milliseconds. Elasticsearch uses the BM25 algorithm for relevance scoring, which considers how frequently search terms appear in a document, how rare those terms are across the entire collection, and other factors to rank results. When searching for "climate change," the system found 2,645 matching articles and returned the most relevant ones first. The top result, scoring 13.55, was an article titled "In America's Heartland, Discussing Climate Change Without Saying 'Climate Change'" from The New York Times—clearly a highly relevant match given that the search terms appear multiple times in the title alone.
 
