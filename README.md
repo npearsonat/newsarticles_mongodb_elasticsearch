@@ -10,7 +10,7 @@ The foundation of this project is a comprehensive news articles dataset containi
 
 ## Building the MongoDB Foundation
 
-![Detection Demo](screenshots/MongoDB Compass.png)
+![Detection Demo](screenshots/MongoDB_Compass.png)
 
 The first step in the project was establishing a reliable data storage layer using MongoDB Atlas, MongoDB's cloud-hosted database service. MongoDB was chosen for this project because it handles semi-structured document data naturally, making it ideal for articles that might vary in their field completeness or structure. Setting up MongoDB Atlas involved creating a free-tier cluster, configuring network access to allow connections from my development environment, and establishing a database user with appropriate permissions.
 
@@ -18,7 +18,7 @@ Once the infrastructure was in place, I loaded the CSV dataset into MongoDB usin
 
 ## Integrating Elasticsearch for Search
 
-![Detection Demo](screenshots/docker desktop screenshop.png)
+![Detection Demo](screenshots/docker_desktop_screenshop.png)
 
 With the data safely stored in MongoDB, the next phase involved setting up Elasticsearch to enable sophisticated search capabilities. While MongoDB can handle basic queries, Elasticsearch specializes in full-text search with features like relevance scoring, fuzzy matching, and complex text analysis. I deployed Elasticsearch locally using Docker, which provided an isolated, reproducible environment without requiring a complex installation process. The Docker container runs Elasticsearch version 8.11 on port 9200, and starting it is as simple as running a single docker command.
 
@@ -26,7 +26,7 @@ The integration between MongoDB and Elasticsearch required building an ETL (Extr
 
 ## Search Functionality and Results
 
-![Detection Demo](screenshots/MongoDB Compass.png)
+![Detection Demo](screenshots/Elastic_Search_Example_Search_2.png)
 
 With both databases operational, the system can now perform sophisticated searches across thousands of news articles in milliseconds. Elasticsearch uses the BM25 algorithm for relevance scoring, which considers how frequently search terms appear in a document, how rare those terms are across the entire collection, and other factors to rank results. When searching for "climate change," the system found 2,645 matching articles and returned the most relevant ones first. The top result, scoring 13.55, was an article titled "In America's Heartland, Discussing Climate Change Without Saying 'Climate Change'" from The New York Times—clearly a highly relevant match given that the search terms appear multiple times in the title alone.
 
@@ -67,19 +67,3 @@ To run this project locally, you'll need Python 3.x installed along with the fol
 pymongo==4.6.1
 elasticsearch==8.11.1
 pandas==2.1.4
-```
-
-You'll also need Docker Desktop installed and running to host the Elasticsearch container. A MongoDB Atlas account (free tier available) is required for the cloud database, though you could alternatively run MongoDB locally if preferred.
-
-The setup process involves creating a MongoDB Atlas cluster and database, configuring network access, running the Elasticsearch Docker container, and executing the Python scripts to load data and build the search index. Detailed setup instructions are available in the repository's scripts, which include comments explaining each configuration step.
-
-## Future Enhancements
-
-Several features could extend this project's capabilities. A web interface built with Flask or Streamlit would provide a user-friendly search experience with a proper input field and formatted results display. Implementing autocomplete functionality would suggest queries as users type, improving the search experience. Faceted search would allow users to filter results by multiple criteria simultaneously—publication, date range, and content type, for example. Adding data visualization dashboards could reveal trends in the article collection, such as topic frequency over time or publication patterns. Pagination would handle large result sets more gracefully, and fuzzy matching would provide better tolerance for typos in search queries.
-
-## Contact
-
-[Your Name]
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your LinkedIn Profile]
-- Email: your.email@example.com
