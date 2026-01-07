@@ -10,7 +10,7 @@ The foundation of this project is a comprehensive news articles dataset containi
 
 ## Building the MongoDB Foundation
 
-![Detection Demo](screenshots/MongoDB_Compass.png)
+![Detection Demo](screenshots/mongodb_compass_2.png)
 
 The first step in the project was establishing a reliable data storage layer using MongoDB Atlas, MongoDB's cloud-hosted database service. MongoDB was chosen for this project because it handles semi-structured document data naturally, making it ideal for articles that might vary in their field completeness or structure. Setting up MongoDB Atlas involved creating a free-tier cluster, configuring network access to allow connections from my development environment, and establishing a database user with appropriate permissions.
 
