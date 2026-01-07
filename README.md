@@ -197,14 +197,3 @@ news-search-engine/
 2. **Elasticsearch version compatibility** - Matched Python client version with server version
 3. **NaN handling in data** - Implemented data cleaning to convert NaN to empty strings before indexing
 4. **Performance optimization** - Batching could further improve indexing speed
-
-## License
-
-MIT License
-
-## Contact
-
-[Your Name]
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your LinkedIn]
-- Email: your.email@example.com
