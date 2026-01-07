@@ -6,7 +6,7 @@ This project is a full-text search engine built for exploring news articles at s
 
 ## The Dataset
 
-This project was built using a comprehensive news articles dataset containing over 50,000 articles from major publications including The New York Times, Breitbart, and other prominent sources. Each article in the dataset includes structured fields: a unique identifier, title, full content text, author name, publication name, publication date (broken down into date, year, and month fields), and the original URL. The dataset comes from publicly available news article collection and has articles with missing values, inconsistent formatting, and varying content lengths.
+This project was built using a comprehensive news articles articles from major publications including The New York Times, Breitbart, and other prominent sources. Each article in the dataset includes structured fields: a unique identifier, title, full content text, author name, publication name, publication date (broken down into date, year, and month fields), and the original URL. The dataset comes from publicly available news article collection and has articles with missing values, inconsistent formatting, and varying content lengths.
 Kaggle Sources: https://www.kaggle.com/datasets/asad1m9a9h6mood/news-articles?select=Articles.csv
 
 ## Building MongoDB Database 
